@@ -55,7 +55,7 @@ const cases = [
     description: "EllaBella moda filmi",
     src: "https://res.cloudinary.com/dymkjy9fd/video/upload/ella_bella_reklam_çekimi_qkzt8q.mp4",
   },
-];
+] 
 const showreelVideos = [
   {
     title: "Voxel Reel 01",
@@ -73,7 +73,7 @@ const showreelVideos = [
     title: "Voxel Reel 04",
     src: "https://res.cloudinary.com/dymkjy9fd/video/upload/voxel_-_showreel_-_04_hgk3b7.mp4",
   },
-];
+] 
 
 export default function VoxelPremiumHomepage() {
   const mouseX = useMotionValue(0);
