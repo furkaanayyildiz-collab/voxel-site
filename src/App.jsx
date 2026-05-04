@@ -134,8 +134,7 @@ const handleMobileNav = (id) => {
     return () => { document.body.style.overflow = "auto"; };
   }, [showreelOpen]);
 
- 
-    return (
+   return (
   <>
     {showIntro && (
       <div className="fixed inset-0 z-[9999] bg-black flex items-center justify-center">
@@ -150,11 +149,6 @@ const handleMobileNav = (id) => {
       </div>
     )}
 
-    <main className="voxel-site min-h-screen overflow-hidden bg-[#050505] text-white">
-      ...
-    </main>
-  </>
-);
     <main className="voxel-site min-h-screen overflow-hidden bg-[#050505] text-white selection:bg-orange-500 selection:text-black">
       <style>{`@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&display=swap'); .voxel-site{font-family:'Plus Jakarta Sans',system-ui,sans-serif}.voxel-site h1,.voxel-site h2,.voxel-site h3,.voxel-site .font-black{font-family:'Plus Jakarta Sans',system-ui,sans-serif;font-weight:800;letter-spacing:-.02em}`}</style>
       <motion.div className="pointer-events-none fixed left-0 top-0 z-50 hidden h-36 w-36 -translate-x-1/2 -translate-y-1/2 rounded-full bg-orange-500/20 blur-2xl md:block" style={{ x: smoothX, y: smoothY }} />
@@ -236,6 +230,7 @@ const handleMobileNav = (id) => {
       {activeCard && <ActiveCardModal card={activeCard} close={()=>setActiveCard(null)} openService={()=>setServiceView(activeCard)} />}
       {serviceView && <ServiceView serviceView={serviceView} close={()=>setServiceView(null)} goToContact={goToContact} />}
     </main>
+      </>
   );
 }
 
