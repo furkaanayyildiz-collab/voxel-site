@@ -62,7 +62,7 @@ export default function VoxelPremiumHomepage() {
   const [activeCard, setActiveCard] = useState(null);
   const [serviceView, setServiceView] = useState(null);
   const [showreelOpen, setShowreelOpen] = useState(false);
-
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const heroCards = [
     { key: "brand", title: "Brand", subtitle: "Identity", iconName: "layers", detailTitle: "Brand Foundation", detailText: "Markanızın algısını güçlü, tutarlı ve premium bir sistemle inşa ederiz.", headline: "Markanızın algısını tasarlarız.", intro: "Logo, kurumsal kimlik, marka dili ve görsel sistemi tek bir premium kimlik altında birleştiririz.", bullets: ["Logo Tasarımı", "Kurumsal Kimlik", "Marka Dili", "Görsel Sistem"], process: ["Keşif", "Konumlandırma", "Kimlik Tasarımı", "Marka Sistemi"] },
     { key: "meta", title: "Meta", subtitle: "Performance", iconName: "megaphone", detailTitle: "Growth Engine", detailText: "Reklamlarınızı ölçülebilir ve kârlı büyüme sistemine dönüştürürüz.", headline: "Görünürlüğü talebe çeviririz.", intro: "Meta reklam yönetimi, kreatif testleri ve performans optimizasyonunu büyüme odaklı yönetiriz.", bullets: ["Meta Ads", "Kreatif Test", "Funnel Kurgusu", "Performans Takibi"], process: ["Strateji", "Kreatif Üretim", "Test", "Optimizasyon"] },
@@ -80,7 +80,18 @@ export default function VoxelPremiumHomepage() {
     if (id === "top") return window.scrollTo({ top: 0, behavior: "smooth" });
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
   };
-  const goToContact = () => { setActiveCard(null); setServiceView(null); setShowreelOpen(false); setTimeout(() => scrollToSection("contact"), 80); };
+  const goToContact = () => {
+  setActiveCard(null);
+  setServiceView(null);
+  setShowreelOpen(false);
+  setMobileMenuOpen(false);
+  setTimeout(() => scrollToSection("contact"), 80);
+};
+
+const handleMobileNav = (id) => {
+  setMobileMenuOpen(false);
+  setTimeout(() => scrollToSection(id), 80);
+};
 
   useEffect(() => {
     const onMove = (event) => { mouseX.set(event.clientX); mouseY.set(event.clientY); };
@@ -108,7 +119,45 @@ export default function VoxelPremiumHomepage() {
         <nav className="fixed left-1/2 top-4 z-50 mx-auto flex w-[calc(100%-24px)] max-w-7xl -translate-x-1/2 items-center justify-between rounded-full border border-white/10 bg-black/55 px-4 py-3 backdrop-blur-2xl shadow-[0_0_60px_rgba(0,0,0,0.35)] md:top-5 md:w-[calc(100%-40px)] md:px-5 md:py-4">
           <button onClick={() => scrollToSection("top")} className="group flex items-center gap-3"><VoxelLogo className="h-7 w-auto text-white transition group-hover:text-orange-400" /><p className="hidden text-[10px] uppercase tracking-[0.28em] text-white/40 sm:block">Digital Media Agency</p></button>
           <div className="hidden items-center gap-8 text-sm text-white/60 md:flex"><button onClick={() => scrollToSection("services")} className="transition hover:text-white">Hizmetler</button><button onClick={() => scrollToSection("work")} className="transition hover:text-white">Projeler</button><button onClick={() => scrollToSection("process")} className="transition hover:text-white">Süreç</button><button onClick={() => scrollToSection("contact")} className="transition hover:text-white">İletişim</button></div>
-          <button onClick={goToContact} className="group flex items-center gap-2 rounded-full bg-white px-3 py-2 text-xs font-semibold text-black transition hover:bg-orange-500 sm:px-4 sm:text-sm">Projeni Konuşalım<Icon name="arrow" className="h-4 w-4 transition group-hover:translate-x-1" /></button>
+          <div className="flex items-center gap-2">
+  <button onClick={goToContact} className="group flex items-center gap-2 rounded-full bg-white px-3 py-2 text-xs font-semibold text-black transition hover:bg-orange-500 sm:px-4 sm:text-sm">
+    Projeni Konuşalım
+    <Icon name="arrow" className="h-4 w-4 transition group-hover:translate-x-1" />
+  </button>
+
+  <button
+    type="button"
+    onClick={() => setMobileMenuOpen((value) => !value)}
+    className="grid h-10 w-10 place-items-center rounded-full border border-white/10 bg-white/5 text-white md:hidden"
+    aria-label="Menüyü aç"
+  >
+    ☰
+  </button>
+</div>
+
+{mobileMenuOpen && (
+  <motion.div
+    initial={{ opacity: 0, y: -8, scale: 0.98 }}
+    animate={{ opacity: 1, y: 0, scale: 1 }}
+    className="absolute left-0 right-0 top-[calc(100%+10px)] rounded-[1.5rem] border border-white/10 bg-black/90 p-3 shadow-[0_0_60px_rgba(0,0,0,0.45)] backdrop-blur-2xl md:hidden"
+  >
+    {[
+      ["services", "Hizmetler"],
+      ["work", "Projeler"],
+      ["process", "Süreç"],
+      ["contact", "İletişim"],
+    ].map(([id, label]) => (
+      <button
+        key={id}
+        onClick={() => handleMobileNav(id)}
+        className="flex w-full items-center justify-between rounded-2xl px-4 py-3 text-left text-sm font-semibold text-white/70 transition hover:bg-orange-500/10 hover:text-white"
+      >
+        {label}
+        <Icon name="arrow" className="h-4 w-4 text-orange-400" />
+      </button>
+    ))}
+  </motion.div>
+)}
         </nav>
 
         <div className="relative z-10 mx-auto grid max-w-7xl items-center gap-12 pt-24 lg:grid-cols-[1.05fr_0.95fr] lg:pt-28">
