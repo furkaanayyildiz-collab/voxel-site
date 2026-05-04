@@ -41,18 +41,21 @@ const cases = [
     brand: "MOHER",
     category: "Commercial Film",
     description: "Moher için çekilen reklam filmi",
+    tags: ["Video Production", "Creative Campaign", "Fashion"],
     src: "https://res.cloudinary.com/dymkjy9fd/video/upload/moher_reklam_çekimi_rvebzc.mp4",
   },
   {
     brand: "PATSOLINA",
     category: "Social Media",
     description: "Patsolina reels çalışması",
+    tags: ["Video Production", "Food & Beverage", "Social Content"],
     src: "https://res.cloudinary.com/dymkjy9fd/video/upload/patsolina_reels1_ctrxmf.mp4",
   },
   {
     brand: "ELLABELLA",
     category: "Fashion Film",
     description: "EllaBella moda filmi",
+    tags: ["Fashion", "Campaign Film", "Creative Production"],
     src: "https://res.cloudinary.com/dymkjy9fd/video/upload/ella_bella_reklam_çekimi_qkzt8q.mp4",
   },
 ];
