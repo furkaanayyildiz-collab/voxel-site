@@ -146,7 +146,6 @@ const handleMobileNav = (id) => {
     <video
       src="https://res.cloudinary.com/dymkjy9fd/video/upload/hf_20260504_211710_6056d405-13d7-4aef-9367-1e9a70c51403_iynrqa.mp4"
       autoPlay
-      muted
       playsInline
       onEnded={() => {
         setIntroLeaving(true);
