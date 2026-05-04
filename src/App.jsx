@@ -37,9 +37,24 @@ function VoxelLogo({ className = "h-8 w-auto" }) {
 }
 
 const cases = [
-  { brand: "MOHER", category: "Fashion Campaign", description: "Moher için markanın estetik dilini yansıtan, dikkat çekici bir reklam kampanyası kurguladık. Kreatif fikirden çekim sürecine kadar tüm prodüksiyonu yöneterek markanın algısını güçlendirdik.", tags: ["Video Production", "Creative Campaign", "Fashion"], src: "/videos/moher.mp4" },
-  { brand: "PATSOLINA", category: "Local Brand Campaign", description: "Patsolina için hedef kitlesine uygun, hızlı tüketilebilir ve dikkat çekici bir video içerik kurgusu oluşturduk. Markanın enerjisini ve ürün deneyimini öne çıkaran bir kampanya hazırladık.", tags: ["Video Production", "Food & Beverage", "Social Content"], src: "/videos/patsolina.mp4" },
-  { brand: "ELLABELLA", category: "Fashion Film", description: "EllaBella için markanın zarif ve premium duruşunu yansıtan bir moda reklam filmi ürettik. Görsel estetik ve kurgu diliyle markanın algısını üst segmente taşıdık.", tags: ["Fashion", "Campaign Film", "Creative Production"], src: "/videos/ellabella.mp4" },
+  {
+    brand: "MOHER",
+    category: "Commercial Film",
+    description: "Moher için çekilen reklam filmi",
+    src: "https://res.cloudinary.com/dymkjy9fd/video/upload/moher_reklam_çekimi_rvebzc.mp4",
+  },
+  {
+    brand: "PATSOLINA",
+    category: "Social Media",
+    description: "Patsolina reels çalışması",
+    src: "https://res.cloudinary.com/dymkjy9fd/video/upload/patsolina_reels1_ctrxmf.mp4",
+  },
+  {
+    brand: "ELLABELLA",
+    category: "Fashion Film",
+    description: "EllaBella moda filmi",
+    src: "https://res.cloudinary.com/dymkjy9fd/video/upload/ella_bella_reklam_çekimi_qkzt8q.mp4",
+  },
 ];
 
 const showreelVideos = [
