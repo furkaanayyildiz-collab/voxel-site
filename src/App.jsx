@@ -81,6 +81,7 @@ const showreelVideos = [
 
 export default function VoxelPremiumHomepage() {
   const [showIntro, setShowIntro] = useState(true);
+  const [introLeaving, setIntroLeaving] = useState(false);
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
   const smoothX = useSpring(mouseX, { stiffness: 70, damping: 22 });
@@ -137,17 +138,24 @@ const handleMobileNav = (id) => {
    return (
   <>
     {showIntro && (
-      <div className="fixed inset-0 z-[9999] bg-black flex items-center justify-center">
-        <video
-          src="https://res.cloudinary.com/dymkjy9fd/video/upload/hf_20260504_211710_6056d405-13d7-4aef-9367-1e9a70c51403_iynrqa.mp4"
-          autoPlay
-          muted
-          playsInline
-          className="w-[300px] md:w-[500px]"
-          onEnded={() => setShowIntro(false)}
-        />
-      </div>
-    )}
+  <div
+    className={`fixed inset-0 z-[9999] flex items-center justify-center overflow-hidden bg-black transition-all duration-1000 ease-out ${
+      introLeaving ? "opacity-0 scale-105 blur-sm" : "opacity-100 scale-100 blur-0"
+    }`}
+  >
+    <video
+      src="https://res.cloudinary.com/dymkjy9fd/video/upload/hf_20260504_211710_6056d405-13d7-4aef-9367-1e9a70c51403_iynrqa.mp4"
+      autoPlay
+      muted
+      playsInline
+      onEnded={() => {
+        setIntroLeaving(true);
+        setTimeout(() => setShowIntro(false), 900);
+      }}
+      className="w-full h-full object-cover"
+    />
+  </div>
+)}
 
     <main className="voxel-site min-h-screen overflow-hidden bg-[#050505] text-white selection:bg-orange-500 selection:text-black">
       <style>{`@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&display=swap'); .voxel-site{font-family:'Plus Jakarta Sans',system-ui,sans-serif}.voxel-site h1,.voxel-site h2,.voxel-site h3,.voxel-site .font-black{font-family:'Plus Jakarta Sans',system-ui,sans-serif;font-weight:800;letter-spacing:-.02em}`}</style>
