@@ -80,6 +80,7 @@ const showreelVideos = [
 ];
 
 export default function VoxelPremiumHomepage() {
+  const [showIntro, setShowIntro] = useState(true);
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
   const smoothX = useSpring(mouseX, { stiffness: 70, damping: 22 });
@@ -133,7 +134,27 @@ const handleMobileNav = (id) => {
     return () => { document.body.style.overflow = "auto"; };
   }, [showreelOpen]);
 
-  return (
+ 
+    return (
+  <>
+    {showIntro && (
+      <div className="fixed inset-0 z-[9999] bg-black flex items-center justify-center">
+        <video
+          src="https://res.cloudinary.com/dymkjy9fd/video/upload/hf_20260504_211710_6056d405-13d7-4aef-9367-1e9a70c51403_iynrqa.mp4"
+          autoPlay
+          muted
+          playsInline
+          className="w-[300px] md:w-[500px]"
+          onEnded={() => setShowIntro(false)}
+        />
+      </div>
+    )}
+
+    <main className="voxel-site min-h-screen overflow-hidden bg-[#050505] text-white">
+      ...
+    </main>
+  </>
+);
     <main className="voxel-site min-h-screen overflow-hidden bg-[#050505] text-white selection:bg-orange-500 selection:text-black">
       <style>{`@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&display=swap'); .voxel-site{font-family:'Plus Jakarta Sans',system-ui,sans-serif}.voxel-site h1,.voxel-site h2,.voxel-site h3,.voxel-site .font-black{font-family:'Plus Jakarta Sans',system-ui,sans-serif;font-weight:800;letter-spacing:-.02em}`}</style>
       <motion.div className="pointer-events-none fixed left-0 top-0 z-50 hidden h-36 w-36 -translate-x-1/2 -translate-y-1/2 rounded-full bg-orange-500/20 blur-2xl md:block" style={{ x: smoothX, y: smoothY }} />
