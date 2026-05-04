@@ -47,9 +47,10 @@ const showreelVideos = [
   title: "Voxel Reel 01",
   src: "https://res.cloudinary.com/dymkjy9fd/video/upload/voxel_-_showreel_-_02_yvzbs3.mp4",
 },
-  { title: "Voxel Reel 02", src: "/videos/voxel-2.mp4" },
-  { title: "Voxel Reel 03", src: "/videos/voxel-3.mp4" },
-  { title: "Voxel Reel 04", src: "/videos/voxel-4.mp4" },
+  https://res.cloudinary.com/dymkjy9fd/video/upload/voxel_-_showreel_-_02_yvzbs3.mp4
+https://res.cloudinary.com/dymkjy9fd/video/upload/voxel_-_showreel_-_03_xs3n4n.mp4
+https://res.cloudinary.com/dymkjy9fd/video/upload/voxel_-_showreel_-_04_hgk3b7.mp4
+https://res.cloudinary.com/dymkjy9fd/video/upload/voxel_-_showreel_-_01_lwxbpi.mp4
 ];
 
 export default function VoxelPremiumHomepage() {
