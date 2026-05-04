@@ -139,9 +139,9 @@ const handleMobileNav = (id) => {
   <>
     {showIntro && (
   <div
-    className={`fixed inset-0 z-[9999] flex items-center justify-center overflow-hidden bg-black transition-all duration-1000 ease-out ${
-      introLeaving ? "opacity-0 scale-105 blur-sm" : "opacity-100 scale-100 blur-0"
-    }`}
+    className={`fixed inset-0 z-[9999] flex items-center justify-center overflow-hidden bg-black transition-all duration-[1400ms] ease-out ${
+  introLeaving ? "opacity-0 scale-110 blur-md" : "opacity-100 scale-100 blur-0"
+}`}
   >
     <video
       src="https://res.cloudinary.com/dymkjy9fd/video/upload/hf_20260504_211710_6056d405-13d7-4aef-9367-1e9a70c51403_iynrqa.mp4"
@@ -150,9 +150,9 @@ const handleMobileNav = (id) => {
       playsInline
       onEnded={() => {
         setIntroLeaving(true);
-        setTimeout(() => setShowIntro(false), 900);
+        setTimeout(() => setShowIntro(false), 1400);
       }}
-      className="w-full h-full object-cover"
+      className="h-full w-full object-contain md:object-cover"
     />
   </div>
 )}
