@@ -56,7 +56,6 @@ const cases = [
     src: "https://res.cloudinary.com/dymkjy9fd/video/upload/ella_bella_reklam_çekimi_qkzt8q.mp4",
   },
 ];
-
 const showreelVideos = [
   {
     title: "Voxel Reel 01",
