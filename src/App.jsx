@@ -144,15 +144,18 @@ const handleMobileNav = (id) => {
 }`}
   >
     <video
-      src="https://res.cloudinary.com/dymkjy9fd/video/upload/hf_20260504_211710_6056d405-13d7-4aef-9367-1e9a70c51403_iynrqa.mp4"
-      autoPlay
-      playsInline
-      onEnded={() => {
-        setIntroLeaving(true);
-        setTimeout(() => setShowIntro(false), 1400);
-      }}
-      className="h-full w-full object-contain md:object-cover"
-    />
+  src="https://res.cloudinary.com/dymkjy9fd/video/upload/q_auto,f_auto,vc_auto/hf_20260504_211710_6056d405-13d7-4aef-9367-1e9a70c51403_iynrqa.mp4"
+  autoPlay
+  muted
+  playsInline
+  preload="auto"
+  onEnded={() => {
+    setIntroLeaving(true);
+    setTimeout(() => setShowIntro(false), 1400);
+  }}
+  onError={() => setShowIntro(false)}
+  className="w-full h-full object-cover"
+/>
   </div>
 )}
 
