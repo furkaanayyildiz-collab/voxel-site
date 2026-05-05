@@ -82,6 +82,13 @@ const showreelVideos = [
 export default function VoxelPremiumHomepage() {
   const [showIntro, setShowIntro] = useState(true);
   const [introLeaving, setIntroLeaving] = useState(false);
+  useEffect(() => {
+  const introSeen = sessionStorage.getItem("voxelIntroSeen");
+
+  if (introSeen) {
+    setShowIntro(false);
+  }
+}, []);
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
   const smoothX = useSpring(mouseX, { stiffness: 70, damping: 22 });
