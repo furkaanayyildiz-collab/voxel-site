@@ -150,19 +150,18 @@ const handleMobileNav = (id) => {
   introLeaving ? "opacity-0 scale-110 blur-md" : "opacity-100 scale-100 blur-0"
 }`}
   >
-    <video
-  src="https://res.cloudinary.com/dymkjy9fd/video/upload/q_auto,f_auto,vc_auto/hf_20260504_211710_6056d405-13d7-4aef-9367-1e9a70c51403_iynrqa.mp4"
+   <video
+  src="https://res.cloudinary.com/dymkjy9fd/video/upload/q_auto:low,f_auto,vc_auto/hf_20260504_211710_6056d405-13d7-4aef-9367-1e9a70c51403_iynrqa.mp4"
   autoPlay
-  muted
   playsInline
   preload="auto"
- onEnded={() => {
-  sessionStorage.setItem("voxelIntroSeen", "true");
-  setIntroLeaving(true);
-  setTimeout(() => setShowIntro(false), 1400);
-}}
-  onError={() => setShowIntro(false)}
-  className="h-full w-full object-contain md:object-cover"
+  muted
+  onEnded={() => {
+    sessionStorage.setItem("voxelIntroSeen", "true");
+    setIntroLeaving(true);
+    setTimeout(() => setShowIntro(false), 1400);
+  }}
+  className="h-full w-full object-cover"
 />
   </div>
 )}
