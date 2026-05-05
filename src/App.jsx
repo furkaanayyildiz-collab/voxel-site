@@ -154,7 +154,7 @@ const handleMobileNav = (id) => {
     setTimeout(() => setShowIntro(false), 1400);
   }}
   onError={() => setShowIntro(false)}
-  className="w-full h-full object-cover"
+  className="h-full w-full object-contain md:object-cover"
 />
   </div>
 )}
