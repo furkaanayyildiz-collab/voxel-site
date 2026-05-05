@@ -156,10 +156,11 @@ const handleMobileNav = (id) => {
   muted
   playsInline
   preload="auto"
-  onEnded={() => {
-    setIntroLeaving(true);
-    setTimeout(() => setShowIntro(false), 1400);
-  }}
+ onEnded={() => {
+  sessionStorage.setItem("voxelIntroSeen", "true");
+  setIntroLeaving(true);
+  setTimeout(() => setShowIntro(false), 1400);
+}}
   onError={() => setShowIntro(false)}
   className="h-full w-full object-contain md:object-cover"
 />
