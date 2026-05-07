@@ -275,6 +275,33 @@ const handleMobileNav = (id) => {
       <WorkSection />
       <ProcessSection />
       <ContactSection />
+      <Footer />
+      function Footer() {
+  return (
+    <footer className="px-4 pb-8 md:px-10 lg:px-14">
+      <div className="mx-auto flex max-w-7xl flex-col gap-5 rounded-[2rem] border border-white/10 bg-white/[0.025] px-6 py-6 text-sm text-white/45 md:flex-row md:items-center md:justify-between">
+        <div>
+          <p className="font-semibold text-white/70">© 2026 voxel. Tüm hakları saklıdır.</p>
+          <p className="mt-1 text-xs uppercase tracking-[0.28em] text-orange-400/70">
+            Digital Media Agency
+          </p>
+        </div>
+
+        <div className="flex flex-wrap gap-4">
+          <a href="https://www.instagram.com/voxeldmr/" target="_blank" rel="noopener noreferrer" className="transition hover:text-orange-400">
+            Instagram
+          </a>
+          <button onClick={() => document.getElementById("work")?.scrollIntoView({ behavior: "smooth" })} className="transition hover:text-orange-400">
+            Projeler
+          </button>
+          <button onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })} className="transition hover:text-orange-400">
+            İletişim
+          </button>
+        </div>
+      </div>
+    </footer>
+  );
+}
       {activeCard && <ActiveCardModal card={activeCard} close={()=>setActiveCard(null)} openService={()=>setServiceView(activeCard)} />}
       {serviceView && <ServiceView serviceView={serviceView} close={()=>setServiceView(null)} goToContact={goToContact} />}
     </main>
