@@ -145,7 +145,7 @@ const handleMobileNav = (id) => {
    return (
   <>
     <a
-  href="https://instagram.com/voxeldmr"
+  href="https://www.instagram.com/voxeldmr/"
   target="_blank"
   rel="noopener noreferrer"
   className="fixed right-4 top-1/2 z-[90] hidden -translate-y-1/2 rounded-full border border-white/10 bg-black/50 p-3 text-white/70 backdrop-blur-xl transition-all duration-300 hover:scale-110 hover:border-orange-500/40 hover:bg-orange-500 hover:text-black md:flex"
@@ -161,7 +161,7 @@ const handleMobileNav = (id) => {
 </a>
 
 <a
-  href="https://instagram.com/INSTAGRAM_ADRESIN"
+  href="https://www.instagram.com/voxeldmr/"
   target="_blank"
   rel="noopener noreferrer"
   className="fixed bottom-5 right-5 z-[90] flex rounded-full border border-white/10 bg-black/60 p-4 text-white/80 shadow-[0_0_30px_rgba(255,106,0,0.18)] backdrop-blur-xl transition-all duration-300 hover:scale-110 hover:border-orange-500/40 hover:bg-orange-500 hover:text-black md:hidden"
