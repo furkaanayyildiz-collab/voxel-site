@@ -151,13 +151,6 @@ const handleMobileNav = (id) => {
   className="fixed right-4 top-1/2 z-[90] hidden -translate-y-1/2 rounded-full border border-white/10 bg-black/50 p-3 text-white/70 backdrop-blur-xl transition-all duration-300 hover:scale-110 hover:border-orange-500/40 hover:bg-orange-500 hover:text-black md:flex"
 >
   <span className="text-lg font-black tracking-[-0.05em]">IG</span>
-    xmlns="http://www.w3.org/2000/svg"
-    viewBox="0 0 24 24"
-    fill="currentColor"
-    className="h-5 w-5"
-  >
-    <path d="M7.75 2C4.57 2 2 4.57 2 7.75v8.5C2 19.43 4.57 22 7.75 22h8.5C19.43 22 22 19.43 22 16.25v-8.5C22 4.57 19.43 2 16.25 2h-8.5zm0 1.8h8.5c2.18 0 3.95 1.77 3.95 3.95v8.5c0 2.18-1.77 3.95-3.95 3.95h-8.5A3.95 3.95 0 013.8 16.25v-8.5C3.8 5.57 5.57 3.8 7.75 3.8zm8.9 1.35a1.15 1.15 0 100 2.3 1.15 1.15 0 000-2.3zM12 6.85A5.15 5.15 0 106.85 12 5.15 5.15 0 0012 6.85zm0 1.8A3.35 3.35 0 118.65 12 3.35 3.35 0 0112 8.65z"/>
-  </svg>
 </a>
 
 <a
@@ -167,13 +160,6 @@ const handleMobileNav = (id) => {
   className="fixed bottom-5 right-5 z-[90] flex rounded-full border border-white/10 bg-black/60 p-4 text-white/80 shadow-[0_0_30px_rgba(255,106,0,0.18)] backdrop-blur-xl transition-all duration-300 hover:scale-110 hover:border-orange-500/40 hover:bg-orange-500 hover:text-black md:hidden"
 >
  <span className="text-xl font-black tracking-[-0.05em]">IG</span>
-    xmlns="http://www.w3.org/2000/svg"
-    viewBox="0 0 24 24"
-    fill="currentColor"
-    className="h-6 w-6"
-  >
-    <path d="M7.75 2C4.57 2 2 4.57 2 7.75v8.5C2 19.43 4.57 22 7.75 22h8.5C19.43 22 22 19.43 22 16.25v-8.5C22 4.57 19.43 2 16.25 2h-8.5zm0 1.8h8.5c2.18 0 3.95 1.77 3.95 3.95v8.5c0 2.18-1.77 3.95-3.95 3.95h-8.5A3.95 3.95 0 013.8 16.25v-8.5C3.8 5.57 5.57 3.8 7.75 3.8zm8.9 1.35a1.15 1.15 0 100 2.3 1.15 1.15 0 000-2.3zM12 6.85A5.15 5.15 0 106.85 12 5.15 5.15 0 0012 6.85zm0 1.8A3.35 3.35 0 118.65 12 3.35 3.35 0 0112 8.65z"/>
-  </svg>
 </a>
     {showIntro && (
   <div
