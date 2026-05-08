@@ -306,38 +306,58 @@ function Footer() {
 }
 function ScrollEyeVideo() {
   const videoRef = useRef(null);
+  const sectionRef = useRef(null);
 
   useEffect(() => {
     const video = videoRef.current;
-    if (!video) return;
+    const section = sectionRef.current;
 
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          video.currentTime = 0;
-          video.play().catch(() => {});
-        }
-      },
-      { threshold: 0.35 }
-    );
+    if (!video || !section) return;
 
-    observer.observe(video);
+    video.pause();
 
-    return () => observer.disconnect();
+    const handleScroll = () => {
+      const rect = section.getBoundingClientRect();
+      const scrollDistance = section.offsetHeight - window.innerHeight;
+
+      const progress = Math.min(
+        Math.max(-rect.top / scrollDistance, 0),
+        1
+      );
+
+      if (video.readyState >= 2) {
+        video.currentTime = progress * 2.2;
+      }
+    };
+
+    video.addEventListener("loadedmetadata", () => {
+      video.currentTime = 0.01;
+      handleScroll();
+    });
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    window.addEventListener("resize", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("resize", handleScroll);
+    };
   }, []);
 
   return (
-    <section className="relative z-10 mx-auto mt-20 max-w-7xl px-4 md:mt-24 md:px-10">
-      <div className="overflow-hidden rounded-[2.5rem] border border-white/10 bg-black shadow-[0_0_100px_rgba(255,106,0,0.12)]">
-        <video
-          ref={videoRef}
-          src="https://res.cloudinary.com/dymkjy9fd/video/upload/hf_20260508_193729_02bb6e8f-5a98-45f4-aa49-b7076791ff99_svqmte.mp4"
-          muted
-          defaultMuted
-          playsInline
-          preload="auto"
-          className="h-[58vh] w-full object-cover md:h-[76vh]"
-        />
+    <section ref={sectionRef} className="relative z-10 h-[155vh]">
+      <div className="sticky top-0 flex h-screen items-center justify-center px-4 pt-24 md:px-10">
+        <div className="w-full max-w-7xl overflow-hidden rounded-[2.5rem] border border-white/10 bg-black shadow-[0_0_100px_rgba(255,106,0,0.12)]">
+          <video
+            ref={videoRef}
+            src="https://res.cloudinary.com/dymkjy9fd/video/upload/hf_20260508_193729_02bb6e8f-5a98-45f4-aa49-b7076791ff99_svqmte.mp4"
+            muted
+            defaultMuted
+            playsInline
+            preload="auto"
+            className="h-[58vh] w-full object-cover md:h-[76vh]"
+          />
+        </div>
       </div>
     </section>
   );
