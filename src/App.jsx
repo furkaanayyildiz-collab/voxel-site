@@ -306,31 +306,44 @@ function Footer() {
 }
 function ScrollEyeVideo() {
   const videoRef = useRef(null);
+  const sectionRef = useRef(null);
 
   useEffect(() => {
     const video = videoRef.current;
-    if (!video) return;
+    const section = sectionRef.current;
 
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          video.currentTime = 0;
-          video.play().catch(() => {});
-        } else {
-          video.pause();
-          video.currentTime = 0;
-        }
-      },
-      { threshold: 0.55 }
-    );
+    if (!video || !section) return;
 
-    observer.observe(video);
+    const handleScroll = () => {
+      const rect = section.getBoundingClientRect();
+      const windowHeight = window.innerHeight;
 
-    return () => observer.disconnect();
+      const scrollProgress = Math.min(
+        Math.max((windowHeight - rect.top) / (windowHeight + rect.height), 0),
+        1
+      );
+
+      if (video.duration) {
+        video.currentTime = scrollProgress * video.duration;
+      }
+    };
+
+    video.addEventListener("loadedmetadata", handleScroll);
+    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("resize", handleScroll);
+
+    return () => {
+      video.removeEventListener("loadedmetadata", handleScroll);
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("resize", handleScroll);
+    };
   }, []);
 
   return (
-    <section className="relative z-10 mx-auto mt-24 max-w-7xl px-4 md:mt-28 md:px-10">
+    <section
+      ref={sectionRef}
+      className="relative z-10 mx-auto mt-24 max-w-7xl px-4 md:mt-28"
+    >
       <div className="overflow-hidden rounded-[2.5rem] border border-white/10 bg-black shadow-[0_0_100px_rgba(255,106,0,0.12)]">
         <video
           ref={videoRef}
@@ -338,7 +351,7 @@ function ScrollEyeVideo() {
           muted
           playsInline
           preload="auto"
-          className="h-[62vh] w-full object-cover md:h-[76vh]"
+          className="h-[70vh] w-full object-cover md:h-[82vh]"
         />
       </div>
     </section>
