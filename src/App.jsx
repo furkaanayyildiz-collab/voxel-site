@@ -326,7 +326,7 @@ function ScrollEyeVideo() {
       );
 
       if (video.readyState >= 2) {
-        video.currentTime = progress * 2.2;
+       video.currentTime = progress * 2;
       }
     };
 
@@ -345,7 +345,7 @@ function ScrollEyeVideo() {
   }, []);
 
   return (
-    <section ref={sectionRef} className="relative z-10 h-[155vh]">
+  <section ref={sectionRef} className="relative z-10 h-[115vh]">
       <div className="sticky top-0 flex h-screen items-center justify-center px-4 pt-24 md:px-10">
         <div className="w-full max-w-7xl overflow-hidden rounded-[2.5rem] border border-white/10 bg-black shadow-[0_0_100px_rgba(255,106,0,0.12)]">
           <video
