@@ -316,15 +316,15 @@ function ScrollEyeVideo() {
 
     const handleScroll = () => {
       const rect = section.getBoundingClientRect();
-      const windowHeight = window.innerHeight;
+      const scrollLength = section.offsetHeight - window.innerHeight;
 
-      const scrollProgress = Math.min(
-        Math.max((windowHeight - rect.top) / (windowHeight + rect.height), 0),
+      const progress = Math.min(
+        Math.max(-rect.top / scrollLength, 0),
         1
       );
 
       if (video.duration) {
-        video.currentTime = scrollProgress * video.duration;
+        video.currentTime = progress * video.duration;
       }
     };
 
@@ -342,17 +342,19 @@ function ScrollEyeVideo() {
   return (
     <section
       ref={sectionRef}
-      className="relative z-10 mx-auto mt-24 max-w-7xl px-4 md:mt-28"
+      className="relative z-10 h-[220vh]"
     >
-      <div className="overflow-hidden rounded-[2.5rem] border border-white/10 bg-black shadow-[0_0_100px_rgba(255,106,0,0.12)]">
-        <video
-          ref={videoRef}
-          src="https://res.cloudinary.com/dymkjy9fd/video/upload/hf_20260508_193729_02bb6e8f-5a98-45f4-aa49-b7076791ff99_svqmte.mp4"
-          muted
-          playsInline
-          preload="auto"
-          className="h-[70vh] w-full object-cover md:h-[82vh]"
-        />
+      <div className="sticky top-0 flex h-screen items-center justify-center px-4 pt-24 md:px-10">
+        <div className="w-full max-w-7xl overflow-hidden rounded-[2.5rem] border border-white/10 bg-black shadow-[0_0_100px_rgba(255,106,0,0.12)]">
+          <video
+            ref={videoRef}
+            src="https://res.cloudinary.com/dymkjy9fd/video/upload/hf_20260508_193729_02bb6e8f-5a98-45f4-aa49-b7076791ff99_svqmte.mp4"
+            muted
+            playsInline
+            preload="auto"
+            className="h-[68vh] w-full object-cover md:h-[78vh]"
+          />
+        </div>
       </div>
     </section>
   );
