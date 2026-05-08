@@ -314,22 +314,21 @@ function ScrollEyeVideo() {
 
     if (!video || !section) return;
 
+    video.pause();
+
     const handleScroll = () => {
       const rect = section.getBoundingClientRect();
       const scrollLength = section.offsetHeight - window.innerHeight;
 
-      const progress = Math.min(
-        Math.max(-rect.top / scrollLength, 0),
-        1
-      );
+      const progress = Math.min(Math.max(-rect.top / scrollLength, 0), 1);
 
       if (video.duration) {
-        video.currentTime = progress * video.duration;
+        video.currentTime = progress * 2.2;
       }
     };
 
     video.addEventListener("loadedmetadata", handleScroll);
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
     window.addEventListener("resize", handleScroll);
 
     return () => {
@@ -340,10 +339,7 @@ function ScrollEyeVideo() {
   }, []);
 
   return (
-    <section
-      ref={sectionRef}
-      className="relative z-10 h-[220vh]"
-    >
+    <section ref={sectionRef} className="relative z-10 h-[145vh]">
       <div className="sticky top-0 flex h-screen items-center justify-center px-4 pt-24 md:px-10">
         <div className="w-full max-w-7xl overflow-hidden rounded-[2.5rem] border border-white/10 bg-black shadow-[0_0_100px_rgba(255,106,0,0.12)]">
           <video
@@ -352,7 +348,7 @@ function ScrollEyeVideo() {
             muted
             playsInline
             preload="auto"
-            className="h-[68vh] w-full object-cover md:h-[78vh]"
+            className="h-[62vh] w-full object-cover md:h-[76vh]"
           />
         </div>
       </div>
