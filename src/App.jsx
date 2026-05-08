@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 
 function Icon({ name, className = "h-5 w-5" }) {
@@ -238,7 +238,7 @@ const handleMobileNav = (id) => {
   </motion.div>
 )}
         </nav>
-
+<ScrollEyeVideo />
         <div className="relative z-10 mx-auto grid max-w-7xl items-center gap-12 pt-24 lg:grid-cols-[1.05fr_0.95fr] lg:pt-28">
           <div>
             <motion.div initial={{opacity:0,y:18}} animate={{opacity:1,y:0}} className="mb-7 inline-flex items-center gap-2 rounded-full border border-orange-500/30 bg-orange-500/10 px-4 py-2 text-xs font-medium uppercase tracking-[0.24em] text-orange-300"><Icon name="spark" className="h-4 w-4" /> {heroPreview.title}</motion.div>
@@ -302,5 +302,58 @@ function Footer() {
         </div>
       </div>
     </footer>
+  );
+}
+function ScrollEyeVideo() {
+  const videoRef = useRef(null);
+  const sectionRef = useRef(null);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    const section = sectionRef.current;
+
+    if (!video || !section) return;
+
+    const handleScroll = () => {
+      const rect = section.getBoundingClientRect();
+      const windowHeight = window.innerHeight;
+
+      const scrollProgress = Math.min(
+        Math.max((windowHeight - rect.top) / (windowHeight + rect.height), 0),
+        1
+      );
+
+      if (video.duration) {
+        video.currentTime = scrollProgress * video.duration;
+      }
+    };
+
+    video.addEventListener("loadedmetadata", handleScroll);
+    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("resize", handleScroll);
+
+    return () => {
+      video.removeEventListener("loadedmetadata", handleScroll);
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("resize", handleScroll);
+    };
+  }, []);
+
+  return (
+    <section
+      ref={sectionRef}
+      className="relative z-10 mx-auto mt-24 max-w-7xl px-4 md:mt-28"
+    >
+      <div className="overflow-hidden rounded-[2.5rem] border border-white/10 bg-black shadow-[0_0_100px_rgba(255,106,0,0.12)]">
+        <video
+          ref={videoRef}
+          src="https://res.cloudinary.com/dymkjy9fd/video/upload/hf_20260508_193729_02bb6e8f-5a98-45f4-aa49-b7076791ff99_svqmte.mp4"
+          muted
+          playsInline
+          preload="auto"
+          className="h-[70vh] w-full object-cover md:h-[82vh]"
+        />
+      </div>
+    </section>
   );
 }
