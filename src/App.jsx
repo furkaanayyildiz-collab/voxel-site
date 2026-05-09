@@ -238,7 +238,7 @@ const handleMobileNav = (id) => {
   </motion.div>
 )}
         </nav>
-<ScrollEyeVideo />
+
         <div className="relative z-10 mx-auto grid max-w-7xl items-center gap-12 pt-24 lg:grid-cols-[1.05fr_0.95fr] lg:pt-28">
           <div>
             <motion.div initial={{opacity:0,y:18}} animate={{opacity:1,y:0}} className="mb-7 inline-flex items-center gap-2 rounded-full border border-orange-500/30 bg-orange-500/10 px-4 py-2 text-xs font-medium uppercase tracking-[0.24em] text-orange-300"><Icon name="spark" className="h-4 w-4" /> {heroPreview.title}</motion.div>
